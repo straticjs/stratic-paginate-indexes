@@ -15,6 +15,29 @@
 
 'use strict';
 
-module.exports = function() {
+var through2 = require('through2');
 
+module.exports = function() {
+	return through2.obj(function(file, enc, callback) {
+		var pageNumber = 1;
+
+		while (file.data.posts.length % 10 !== file.data.posts.length) {
+			var page = [];
+
+			for (var i = 0; i < 10; i++) {
+				page.push(file.data.posts.shift());
+			}
+
+			var newFile = file.clone();
+			newFile.data.posts = page;
+			newFile.data.page = pageNumber;
+			// TODO rewrite file path
+
+			this.push(newFile);
+
+			pageNumber++;
+		}
+
+		callback();
+	});
 };
