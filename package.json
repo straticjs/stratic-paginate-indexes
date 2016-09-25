@@ -1,0 +1,23 @@
+{
+  "name": "stratic-paginate-indexes",
+  "version": "1.0.0",
+  "description": "Gulp plugin to split Stratic index pages into pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strugee/stratic-paginate-indexes.git"
+  },
+  "keywords": [
+    "stratic",
+    "gulpplugin"
+  ],
+  "author": "Alex Jordan <alex@strugee.net>",
+  "license": "LGPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/strugee/stratic-paginate-indexes/issues"
+  },
+  "homepage": "https://github.com/strugee/stratic-paginate-indexes#readme"
+}
