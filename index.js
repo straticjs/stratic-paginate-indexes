@@ -23,6 +23,8 @@ function makePage(originalFile, page, pageNumber) {
 	newFile.data.posts = page;
 	newFile.data.page = pageNumber;
 
+	if (pageNumber === 1) return newFile;
+
 	var filePath = path.parse(newFile.path);
 	filePath.dir = path.join(filePath.dir, 'page', pageNumber.toString());
 	newFile.path = path.format(filePath);
