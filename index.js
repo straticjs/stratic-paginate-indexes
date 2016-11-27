@@ -46,6 +46,7 @@ module.exports = function() {
 
 				that.push(newFile);
 
+				page = [];
 				pageNumber++;
 			}
 		});
