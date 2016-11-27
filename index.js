@@ -20,6 +20,7 @@ var through2 = require('through2'),
 
 function makePage(originalFile, page, pageNumber) {
 	var newFile = originalFile.clone();
+	newFile.data = newFile.data || {};
 	newFile.data.posts = page;
 	newFile.data.page = pageNumber;
 
