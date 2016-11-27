@@ -15,28 +15,41 @@
 
 'use strict';
 
-var through2 = require('through2');
+var through2 = require('through2'),
+    path = require('path');
+
+function makePage(originalFile, page, pageNumber) {
+	var newFile = originalFile.clone();
+	newFile.data.posts = page;
+	newFile.data.page = pageNumber;
+
+	var filePath = path.parse(newFile.path);
+	filePath.dir = path.join(filePath.dir, 'page', pageNumber.toString());
+	newFile.path = path.format(filePath);
+
+	return newFile;
+}
 
 module.exports = function() {
 	return through2.obj(function(file, enc, callback) {
-		var pageNumber = 1;
+		var pageNumber = 1,
+		    that = this;
 
-		while (file.data.posts.length % 10 !== file.data.posts.length) {
-			var page = [];
+		var page = [];
+		file.data.posts.forEach(function(post) {
+			page.push(post);
 
-			for (var i = 0; i < 10; i++) {
-				page.push(file.data.posts.shift());
+			if (page.length === 10) {
+				var newFile = makePage(file, page, pageNumber);
+
+				that.push(newFile);
+
+				pageNumber++;
 			}
+		});
 
-			var newFile = file.clone();
-			newFile.data.posts = page;
-			newFile.data.page = pageNumber;
-			// TODO rewrite file path
-
-			this.push(newFile);
-
-			pageNumber++;
-		}
+		// Handle the last page which won't have 10 posts (and so will fail the above `if` test)
+		this.push(makePage(file, page, pageNumber));
 
 		callback();
 	});

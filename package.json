@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/strugee/stratic-paginate-indexes/issues"
   },
-  "homepage": "https://github.com/strugee/stratic-paginate-indexes#readme"
+  "homepage": "https://github.com/strugee/stratic-paginate-indexes#readme",
+  "dependencies": {
+    "through2": "^2.0.1"
+  }
 }
