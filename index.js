@@ -59,7 +59,7 @@ module.exports = function() {
 		callback();
 	}, function(callback) {
 		pageFiles.forEach(function(file) {
-			file.pageCogunt = pageFiles.length;
+			file.pageCount = pageFiles.length;
 			this.push(file);
 		}, this);
 
