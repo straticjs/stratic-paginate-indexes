@@ -34,12 +34,11 @@ function makePage(originalFile, page, pageNumber) {
 }
 
 module.exports = function() {
-	var pageFiles = [];
-
 	return through2.obj(function(file, enc, callback) {
-		var pageNumber = 1;
+		var pageNumber = 1,
+		    pageFiles = [],
+		    page = [];
 
-		var page = [];
 		file.data.posts.forEach(function(post) {
 			page.push(post);
 
@@ -56,8 +55,7 @@ module.exports = function() {
 		// Handle the last page which won't have 10 posts (and so will fail the above `if` test)
 		pageFiles.push(makePage(file, page, pageNumber));
 
-		callback();
-	}, function(callback) {
+		// Per-index page counts
 		pageFiles.forEach(function(file) {
 			file.pageCount = pageFiles.length;
 			this.push(file);
