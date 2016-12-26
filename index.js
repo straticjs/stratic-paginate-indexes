@@ -39,21 +39,14 @@ module.exports = function() {
 		    pageFiles = [],
 		    page = [];
 
-		file.data.posts.forEach(function(post) {
-			page.push(post);
+		while (file.data.posts > 0) {
+			page = file.data.posts.splice(5);
 
-			if (page.length === 10) {
-				var newFile = makePage(file, page, pageNumber);
+			var newFile = makePage(file, page, pageNumber);
+			pageFiles.push(newFile);
 
-				pageFiles.push(newFile);
-
-				page = [];
-				pageNumber++;
-			}
-		});
-
-		// Handle the last page which won't have 10 posts (and so will fail the above `if` test)
-		if (page.length > 0) pageFiles.push(makePage(file, page, pageNumber));
+			pageNumber++;
+		}
 
 		// Per-index page counts
 		pageFiles.forEach(function(file) {
