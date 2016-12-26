@@ -53,7 +53,7 @@ module.exports = function() {
 		});
 
 		// Handle the last page which won't have 10 posts (and so will fail the above `if` test)
-		pageFiles.push(makePage(file, page, pageNumber));
+		if (page.length > 0) pageFiles.push(makePage(file, page, pageNumber));
 
 		// Per-index page counts
 		pageFiles.forEach(function(file) {
