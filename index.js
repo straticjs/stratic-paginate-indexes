@@ -57,7 +57,7 @@ module.exports = function() {
 
 		// Per-index page counts
 		pageFiles.forEach(function(file) {
-			file.pageCount = pageFiles.length;
+			file.data.pageCount = pageFiles.length;
 			this.push(file);
 		}, this);
 
