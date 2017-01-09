@@ -19,7 +19,9 @@ var through2 = require('through2'),
     path = require('path');
 
 function makePage(originalFile, page, pageNumber) {
-	var newFile = originalFile.clone();
+	// Apparently you have to pass true for this to deep-clone.
+	// The docs are wrong. :/
+	var newFile = originalFile.clone(true);
 	newFile.data = newFile.data || {};
 	newFile.data.posts = page;
 	newFile.data.page = pageNumber;
