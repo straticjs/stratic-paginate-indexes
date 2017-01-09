@@ -16,6 +16,7 @@
 'use strict';
 
 var through2 = require('through2'),
+    chunk = require('lodash.chunk'),
     path = require('path');
 
 function makePage(originalFile, page, pageNumber) {
@@ -37,18 +38,14 @@ function makePage(originalFile, page, pageNumber) {
 
 module.exports = function() {
 	return through2.obj(function(file, enc, callback) {
-		var pageNumber = 1,
-		    pageFiles = [],
-		    page = [];
+		var pageFiles = [],
+		    pages = [];
 
-		while (file.data.posts > 0) {
-			page = file.data.posts.splice(5);
+		pages = chunk(file.data.posts, 5);
 
-			var newFile = makePage(file, page, pageNumber);
-			pageFiles.push(newFile);
-
-			pageNumber++;
-		}
+		pageFiles = pages.map(function(page, pageNumber) {
+			return makePage(file, page, pageNumber + 1);
+		});
 
 		// Per-index page counts
 		pageFiles.forEach(function(file) {
