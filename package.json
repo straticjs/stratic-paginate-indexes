@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/strugee/stratic-paginate-indexes#readme",
   "dependencies": {
+    "lodash.chunk": "^4.2.0",
     "through2": "^2.0.1"
   }
 }
