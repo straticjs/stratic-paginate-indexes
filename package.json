@@ -1,6 +1,6 @@
 {
   "name": "stratic-paginate-indexes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gulp plugin to split Stratic index pages into pages",
   "main": "index.js",
   "scripts": {
