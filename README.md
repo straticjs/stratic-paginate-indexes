@@ -1,5 +1,7 @@
 # `stratic-paginate-indexes`
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/straticjs/stratic-paginate-indexes.svg)](https://greenkeeper.io/)
+
 [Gulp][1] plugin to split [Stratic][2] index pages into pages
 
 ## Installation
