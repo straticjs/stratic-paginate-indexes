@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/strugee/stratic-paginate-indexes.git"
+    "url": "git+https://github.com/straticjs/stratic-paginate-indexes.git"
   },
   "keywords": [
     "stratic",
@@ -17,9 +17,9 @@
   "author": "AJ Jordan <alex@strugee.net>",
   "license": "LGPL-3.0+",
   "bugs": {
-    "url": "https://github.com/strugee/stratic-paginate-indexes/issues"
+    "url": "https://github.com/straticjs/stratic-paginate-indexes/issues"
   },
-  "homepage": "https://github.com/strugee/stratic-paginate-indexes#readme",
+  "homepage": "https://github.com/straticjs/stratic-paginate-indexes#readme",
   "dependencies": {
     "lodash.chunk": "^4.2.0",
     "through2": "^2.0.1"
