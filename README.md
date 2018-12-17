@@ -14,7 +14,7 @@ Minimal `gulpfile.js` for this module to work:
 
 ```js
 var gulp = require('gulp');
-var straticParseHeader = require('stratic-parse-header');
+var frontMatter = require('gulp-gray-matter');
 var straticDateInPath = require('stratic-date-in-path');
 var addsrc = require('gulp-add-src');
 var straticPostsToIndex = require('stratic-posts-to-index');
@@ -22,7 +22,7 @@ var straticPaginateIndexes = require('stratic-paginate-indexes');
 
 gulp.task('post-index', function() {
     gulp.src('*.md')
-        .pipe(straticParseHeader())
+        .pipe(frontMatter())
         .pipe(straticDateInPath())
         .pipe(addsrc('src/blog/index.jade'))
         .pipe(straticPostsToIndex('index.jade'))
@@ -34,7 +34,7 @@ Complete example `gulpfile.js`:
 
 ```js
 var gulp = require('gulp');
-var straticParseHeader = require('stratic-parse-header');
+var frontMatter = require('gulp-gray-matter');
 var remark = require('gulp-remark');
 var remarkHtml = require('remark-html');
 var straticDateInPath = require('stratic-date-in-path');
@@ -46,7 +46,7 @@ var rename = require('gulp-rename');
 
 gulp.task('post-index', function() {
     gulp.src('*.md')
-        .pipe(straticParseHeader())
+        .pipe(frontMatter())
         .pipe(remark().use(remarkHtml))
         .pipe(straticDateInPath())
         .pipe(addsrc('src/blog/index.jade'))
